@@ -16,8 +16,6 @@ struct SearchUserService {
         
         return Observable.create { (observer) -> Disposable in
             
-            print("here")
-            
             let completeQueryURL = EndPoints.SearchUsers.topUrl + userName + EndPoints.SearchUsers.midUrl + String(page) + EndPoints.SearchUsers.endUrl
             
             if let url = URL(string: completeQueryURL){

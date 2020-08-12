@@ -14,12 +14,13 @@ class SearchViewController: UIViewController {
     
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
-    let disposeBag = DisposeBag()
-    var isPaginating = false
-    var usersData: [Items]?
-    var pageNumber: Int?
-    var searchName: String?
-    var pagelimit: Int?
+    private let disposeBag = DisposeBag()
+    private var isPaginating = false
+    private var usersData: [Items]?
+    private var pageNumber: Int?
+    private var searchName: String?
+    private var pagelimit: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: Constants.CellIdentifiers.forSearchVC)
@@ -158,33 +159,26 @@ extension SearchViewController: UITableViewDelegate, UIScrollViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
-        
-        
         let position = scrollView.contentOffset.y
         
         if position > (tableView.contentSize.height - 10 - scrollView.frame.height){
             
-            
             guard  !(self.pageNumber! > self.pagelimit! / Constants.resultsPerPage) else { return }
             
-            
             if !self.isPaginating{
-                print("love")
+                
                 self.isPaginating = true
                 self.tableView.tableFooterView = createSpinnerFooter()
                 
                 if self.pageNumber != nil{
                     self.pageNumber! += 1
                 }else { return }
-                
-                print(pageNumber)
                 guard let name = self.searchName else { return }
                 let searchUserService = SearchUserService()
                 searchUserService.fetchUsers(with: name, page: self.pageNumber!).observeOn(MainScheduler.instance).subscribe(onNext: {  searchUserData in
                     self.tableView.tableFooterView = nil
                     self.isPaginating = false
                     self.usersData?.append(contentsOf: searchUserData.items)
-                    print(self.usersData?.count)
                     self.tableView.reloadData()
                 }).disposed(by: disposeBag)
                 
