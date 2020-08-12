@@ -71,7 +71,6 @@ extension InformationViewController: InfoTableViewCellDelegate {
     func showButtonPressed(on showButtonOutlet: UIButton, row: Int) {
         self.selectedCellIndexPath = [0,row]
         if self.previousSelectedRow != nil {
-            print("here")
             tableView.reloadRows(at: [[0,self.previousSelectedRow!]], with: .fade)
             self.previousSelectedRow = nil
         }
