@@ -10,6 +10,7 @@ import UIKit
 
 
 struct Constants {
+    static let resultsPerPage = 20
     
     struct Segue {
          static let searchToInfo = "goToInfoFromSearch"

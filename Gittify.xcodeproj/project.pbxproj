@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -20,6 +20,9 @@
 		B252BAD024E43DDD00974FC9 /* SearchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B252BACE24E43DDD00974FC9 /* SearchTableViewCell.xib */; };
 		B252BAD324E446FB00974FC9 /* InfoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAD124E446FB00974FC9 /* InfoTableViewCell.swift */; };
 		B252BAD424E446FB00974FC9 /* InfoTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B252BAD224E446FB00974FC9 /* InfoTableViewCell.xib */; };
+		B252BAD624E475A300974FC9 /* SearchUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAD524E475A300974FC9 /* SearchUserData.swift */; };
+		B252BAD824E4771100974FC9 /* SearchUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAD724E4771100974FC9 /* SearchUserService.swift */; };
+		B252BADA24E477B400974FC9 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAD924E477B400974FC9 /* EndPoints.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -39,6 +42,9 @@
 		B252BACE24E43DDD00974FC9 /* SearchTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchTableViewCell.xib; sourceTree = "<group>"; };
 		B252BAD124E446FB00974FC9 /* InfoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoTableViewCell.swift; sourceTree = "<group>"; };
 		B252BAD224E446FB00974FC9 /* InfoTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = InfoTableViewCell.xib; sourceTree = "<group>"; };
+		B252BAD524E475A300974FC9 /* SearchUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserData.swift; sourceTree = "<group>"; };
+		B252BAD724E4771100974FC9 /* SearchUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserService.swift; sourceTree = "<group>"; };
+		B252BAD924E477B400974FC9 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
 		F9BFCA55159556266F52DE4E /* Pods-Gittify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gittify.debug.xcconfig"; path = "Target Support Files/Pods-Gittify/Pods-Gittify.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -60,7 +66,6 @@
 				F9BFCA55159556266F52DE4E /* Pods-Gittify.debug.xcconfig */,
 				80DCADC41C03C004A51FA206 /* Pods-Gittify.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -129,6 +134,7 @@
 		B252BAC324E4327600974FC9 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				B252BAD524E475A300974FC9 /* SearchUserData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -136,6 +142,8 @@
 		B252BAC424E4328500974FC9 /* Network Services */ = {
 			isa = PBXGroup;
 			children = (
+				B252BAD724E4771100974FC9 /* SearchUserService.swift */,
+				B252BAD924E477B400974FC9 /* EndPoints.swift */,
 			);
 			path = "Network Services";
 			sourceTree = "<group>";
@@ -294,7 +302,10 @@
 				B252BAC924E435A200974FC9 /* Constants.swift in Sources */,
 				B252BAB224E4319B00974FC9 /* SearchViewController.swift in Sources */,
 				B252BAAE24E4319B00974FC9 /* AppDelegate.swift in Sources */,
+				B252BAD624E475A300974FC9 /* SearchUserData.swift in Sources */,
+				B252BAD824E4771100974FC9 /* SearchUserService.swift in Sources */,
 				B252BACF24E43DDD00974FC9 /* SearchTableViewCell.swift in Sources */,
+				B252BADA24E477B400974FC9 /* EndPoints.swift in Sources */,
 				B252BAD324E446FB00974FC9 /* InfoTableViewCell.swift in Sources */,
 				B252BAB024E4319B00974FC9 /* SceneDelegate.swift in Sources */,
 				B252BAC724E4338700974FC9 /* InformationViewController.swift in Sources */,
