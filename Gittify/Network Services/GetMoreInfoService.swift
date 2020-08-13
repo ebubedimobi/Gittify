@@ -17,7 +17,7 @@ struct GetMoreInfoService {
         return Observable.create { (observer) -> Disposable in
             
             if let url = URL(string: completeQueryURL){
-           
+                
                 let session = URLSession(configuration: .default)
                 let task = session.dataTask(with: url) { (data, response, error) in
                     
