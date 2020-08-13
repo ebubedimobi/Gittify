@@ -40,9 +40,6 @@ class InfoTableViewCell: UITableViewCell {
 
     showDelegate?.showButtonPressed(on: sender, row: sender.tag)
        
-        
-        
-        
     }
     
     @IBAction func hideButtonClicked(_ sender: UIButton) {

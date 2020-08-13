@@ -34,8 +34,9 @@ class InformationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "InfoTableViewCell", bundle: nil), forCellReuseIdentifier: Constants.CellIdentifiers.forInfoVC)
+        tableView.tableFooterView = UIView()
         navigationItem.title = userData?.login
-        getData()
+        self.getData()
         self.setImage()
         
     }

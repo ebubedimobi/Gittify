@@ -27,6 +27,7 @@ class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(UINib(nibName: "SearchTableViewCell", bundle: nil), forCellReuseIdentifier: Constants.CellIdentifiers.forSearchVC)
+        tableView.tableFooterView = UIView()
         
     }
     
@@ -161,7 +162,7 @@ extension SearchViewController: UITableViewDelegate, UIScrollViewDelegate{
         guard self.usersData?.count != nil, self.pagelimit != nil, self.pageNumber != nil else { return }
         
         guard !(self.usersData!.count >= self.pagelimit!) else {return}
-       
+        
         let position = scrollView.contentOffset.y
         
         if position > (tableView.contentSize.height - 10 - scrollView.frame.height){
