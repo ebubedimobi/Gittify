@@ -21,13 +21,15 @@ class InformationViewController: UIViewController {
     var userData: Items?
     var repos: [RepoData]?
     var extraUserData: ExtraUserData?
-    var selectedCellIndexPath: IndexPath?
-    var previousSelectedRow: Int?
+    
     
     //для пагинации
     private var isPaginating = false
     private var pageNumber: Int?
     private var pagelimit: Int?
+    private var selectedCellIndexPath: IndexPath?
+    private var previousSelectedRow: Int?
+    private var indexPath: IndexPath?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -159,6 +161,39 @@ extension InformationViewController: UITableViewDelegate, UIScrollViewDelegate{
         return selectedCellIndexPath?.row == indexPath.row ? Constants.cellsizes.forSelected : Constants.cellsizes.forUnselected
     }
     
+    //MARK: - swipe gestures
+    
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let ToLink = goToLink(at: indexPath)
+        let descript = showDescription(at: indexPath)
+        return UISwipeActionsConfiguration(actions:[ToLink,descript])
+    }
+    
+    private func goToLink(at indexPath: IndexPath) -> UIContextualAction{
+        
+        let action = UIContextualAction(style: .normal, title: "Перейти") { (action, view, completion) in
+            
+            self.indexPath = indexPath
+            self.performSegue(withIdentifier: Constants.Segue.infoToWeb, sender: self)
+            completion(true)
+        }
+        action.image = UIImage(named: "safari")
+        action.backgroundColor = .blue
+        return action
+    }
+    
+    private func showDescription(at indexPath: IndexPath) -> UIContextualAction {
+        let action = UIContextualAction(style: .normal, title: "Описание") { (action, view, completion) in
+            self.presentAlert("Описание", message: self.repos?[indexPath.row].description ?? "нет Описание данного репозитории")
+            completion(true)
+        }
+        action.image = UIImage(named: "info")
+        action.backgroundColor = .purple
+        return action
+        
+        
+    }
+    
     
     //MARK: - ПАГИНАЦИЯ
     
@@ -225,4 +260,21 @@ extension InformationViewController: InfoTableViewCellDelegate {
     }
     
     
+}
+
+//MARK: - Segues and Navigation
+
+extension InformationViewController{
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.Segue.infoToWeb{
+            print("here")
+            let webVC = segue.destination as! WebViewController
+            if let indexPath = self.indexPath{
+                webVC.urlstring = repos?[indexPath.row].html_url
+                tableView.deselectRow(at: indexPath, animated: true)
+                self.indexPath = nil
+            }
+        }
+    }
 }

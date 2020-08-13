@@ -15,10 +15,9 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     private let disposeBag = DisposeBag()
-    
     private var usersData: [Items]?
     
-    //для пагинации
+    //для пагинации 
     private var pageNumber: Int?
     private var searchName: String?
     private var pagelimit: Int?
