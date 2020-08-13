@@ -1,25 +1,23 @@
 //
-//  SearchUserService.swift
+//  GetMoreInfoService.swift
 //  Gittify
 //
-//  Created by Ebubechukwu Dimobi on 12.08.2020.
+//  Created by Ebubechukwu Dimobi on 13.08.2020.
 //  Copyright © 2020 blazeapps. All rights reserved.
 //
 
 import Foundation
 import RxSwift
 
-struct SearchUserService {
+struct GetMoreInfoService {
     
     
-    func fetchUsers(with userName: String, page: Int)-> Observable<SearchUserData>{
+    func fetchMoreInfo(with completeQueryURL: String)-> Observable<ExtraUserData>{
         
         return Observable.create { (observer) -> Disposable in
             
-            let completeQueryURL = EndPoints.ForSearchUsers.topUrl + userName + EndPoints.ForSearchUsers.midUrl + String(page) + EndPoints.ForSearchUsers.endUrl
-            
             if let url = URL(string: completeQueryURL){
-                
+           
                 let session = URLSession(configuration: .default)
                 let task = session.dataTask(with: url) { (data, response, error) in
                     
@@ -29,14 +27,16 @@ struct SearchUserService {
                         return
                     }
                     
+                    
+                    
                     if let safeData = data{
                         
                         let decoder = JSONDecoder()
                         
                         do{
                             
-                            let decodedSearchUserData = try decoder.decode(SearchUserData.self, from: safeData)
-                            observer.onNext(decodedSearchUserData)
+                            let decodedExtraUserData = try decoder.decode(ExtraUserData.self, from: safeData)
+                            observer.onNext(decodedExtraUserData)
                             
                         }catch{
                             
@@ -60,5 +60,4 @@ struct SearchUserService {
         }
         
     }
-    
 }

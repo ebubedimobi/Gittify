@@ -20,4 +20,5 @@ struct Items: Codable {
     let url: String?
     let repos_url: String?
     let type: String?
+    let html_url: String?
 }

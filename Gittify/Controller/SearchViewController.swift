@@ -86,7 +86,11 @@ extension SearchViewController: UISearchBarDelegate{
             DispatchQueue.main.async {
                 self.usersData = nil
                 self.searchName = nil
+                self.pageNumber = nil
+                self.pagelimit = nil
+                self.tableView.tableFooterView = nil
                 self.tableView.reloadData()
+                
             }
             
         }
@@ -128,7 +132,7 @@ extension SearchViewController: UITableViewDataSource{
     }
     
     private func setCellImage(on cell: SearchTableViewCell, with imageUrl: URL ){
-        let processor = DownsamplingImageProcessor(size: cell.imageCover.bounds.size) |> RoundCornerImageProcessor(cornerRadius: 30)
+        let processor = DownsamplingImageProcessor(size: cell.imageCover.bounds.size) |> RoundCornerImageProcessor(cornerRadius: 40)
         cell.imageCover.kf.indicatorType = .activity
         cell.imageCover.kf.setImage(
             with: imageUrl,
@@ -137,16 +141,7 @@ extension SearchViewController: UITableViewDataSource{
                 .scaleFactor(UIScreen.main.scale),
                 .transition(.fade(0.5)),
                 .cacheOriginalImage
-        ]){
-            result in
-            switch result{
-            case .failure(_):
-                self.presentAlert("Server Error", message: "Can not load next Image.Connect to the internet")
-            case .success(_):
-                break
-            }
-            
-        }
+        ])
         
     }
     
@@ -159,14 +154,15 @@ extension SearchViewController: UITableViewDelegate, UIScrollViewDelegate{
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
+        guard self.usersData?.count != nil, self.pagelimit != nil, self.pageNumber != nil else { return }
+        
         let position = scrollView.contentOffset.y
         
         if position > (tableView.contentSize.height - 10 - scrollView.frame.height){
             
             guard  !(self.pageNumber! > self.pagelimit! / Constants.resultsPerPage) else { return }
             
-            if !self.isPaginating{
-                
+            if !self.isPaginating {
                 self.isPaginating = true
                 self.tableView.tableFooterView = createSpinnerFooter()
                 
@@ -198,9 +194,27 @@ extension SearchViewController: UITableViewDelegate, UIScrollViewDelegate{
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         performSegue(withIdentifier: Constants.Segue.searchToInfo, sender: self)
-        tableView.deselectRow(at: indexPath, animated: true)
+        
     }
     
+}
+
+//MARK: - Segues and Navigation
+
+extension SearchViewController{
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Constants.Segue.searchToInfo {
+            
+            if let indexPath = tableView.indexPathForSelectedRow{
+                
+                let infoVC = segue.destination as! InformationViewController
+                infoVC.userData = usersData?[indexPath.row]
+                tableView.deselectRow(at: indexPath, animated: true)
+            }
+            
+        }
+    }
 }
 
 

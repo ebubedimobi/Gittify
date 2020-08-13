@@ -1,22 +1,21 @@
 //
-//  SearchUserService.swift
+//  GetRepoService.swift
 //  Gittify
 //
-//  Created by Ebubechukwu Dimobi on 12.08.2020.
+//  Created by Ebubechukwu Dimobi on 13.08.2020.
 //  Copyright © 2020 blazeapps. All rights reserved.
 //
 
 import Foundation
 import RxSwift
 
-struct SearchUserService {
+struct GetRepoService {
     
-    
-    func fetchUsers(with userName: String, page: Int)-> Observable<SearchUserData>{
+    func fetchRepoData(with topURL: String, page: Int)-> Observable<[RepoData]>{
         
         return Observable.create { (observer) -> Disposable in
             
-            let completeQueryURL = EndPoints.ForSearchUsers.topUrl + userName + EndPoints.ForSearchUsers.midUrl + String(page) + EndPoints.ForSearchUsers.endUrl
+            let completeQueryURL = topURL + EndPoints.ForRepos.midURL + String(page) + EndPoints.ForRepos.endURL
             
             if let url = URL(string: completeQueryURL){
                 
@@ -35,8 +34,8 @@ struct SearchUserService {
                         
                         do{
                             
-                            let decodedSearchUserData = try decoder.decode(SearchUserData.self, from: safeData)
-                            observer.onNext(decodedSearchUserData)
+                            let decodedRepoData = try decoder.decode([RepoData].self, from: safeData)
+                            observer.onNext(decodedRepoData)
                             
                         }catch{
                             
@@ -60,5 +59,4 @@ struct SearchUserService {
         }
         
     }
-    
 }

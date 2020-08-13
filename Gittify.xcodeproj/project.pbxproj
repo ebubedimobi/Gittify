@@ -23,6 +23,10 @@
 		B252BAD624E475A300974FC9 /* SearchUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAD524E475A300974FC9 /* SearchUserData.swift */; };
 		B252BAD824E4771100974FC9 /* SearchUserService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAD724E4771100974FC9 /* SearchUserService.swift */; };
 		B252BADA24E477B400974FC9 /* EndPoints.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAD924E477B400974FC9 /* EndPoints.swift */; };
+		B252BADC24E510FD00974FC9 /* ExtraUserData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BADB24E510FD00974FC9 /* ExtraUserData.swift */; };
+		B252BADE24E5114900974FC9 /* RepoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BADD24E5114900974FC9 /* RepoData.swift */; };
+		B252BAE024E517DA00974FC9 /* GetMoreInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BADF24E517DA00974FC9 /* GetMoreInfoService.swift */; };
+		B252BAE224E517E800974FC9 /* GetRepoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAE124E517E800974FC9 /* GetRepoService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -45,6 +49,10 @@
 		B252BAD524E475A300974FC9 /* SearchUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserData.swift; sourceTree = "<group>"; };
 		B252BAD724E4771100974FC9 /* SearchUserService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUserService.swift; sourceTree = "<group>"; };
 		B252BAD924E477B400974FC9 /* EndPoints.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndPoints.swift; sourceTree = "<group>"; };
+		B252BADB24E510FD00974FC9 /* ExtraUserData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraUserData.swift; sourceTree = "<group>"; };
+		B252BADD24E5114900974FC9 /* RepoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoData.swift; sourceTree = "<group>"; };
+		B252BADF24E517DA00974FC9 /* GetMoreInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoreInfoService.swift; sourceTree = "<group>"; };
+		B252BAE124E517E800974FC9 /* GetRepoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepoService.swift; sourceTree = "<group>"; };
 		F9BFCA55159556266F52DE4E /* Pods-Gittify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gittify.debug.xcconfig"; path = "Target Support Files/Pods-Gittify/Pods-Gittify.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +143,8 @@
 			isa = PBXGroup;
 			children = (
 				B252BAD524E475A300974FC9 /* SearchUserData.swift */,
+				B252BADB24E510FD00974FC9 /* ExtraUserData.swift */,
+				B252BADD24E5114900974FC9 /* RepoData.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -143,6 +153,8 @@
 			isa = PBXGroup;
 			children = (
 				B252BAD724E4771100974FC9 /* SearchUserService.swift */,
+				B252BADF24E517DA00974FC9 /* GetMoreInfoService.swift */,
+				B252BAE124E517E800974FC9 /* GetRepoService.swift */,
 				B252BAD924E477B400974FC9 /* EndPoints.swift */,
 			);
 			path = "Network Services";
@@ -299,11 +311,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B252BAE024E517DA00974FC9 /* GetMoreInfoService.swift in Sources */,
+				B252BADC24E510FD00974FC9 /* ExtraUserData.swift in Sources */,
+				B252BADE24E5114900974FC9 /* RepoData.swift in Sources */,
 				B252BAC924E435A200974FC9 /* Constants.swift in Sources */,
 				B252BAB224E4319B00974FC9 /* SearchViewController.swift in Sources */,
 				B252BAAE24E4319B00974FC9 /* AppDelegate.swift in Sources */,
 				B252BAD624E475A300974FC9 /* SearchUserData.swift in Sources */,
 				B252BAD824E4771100974FC9 /* SearchUserService.swift in Sources */,
+				B252BAE224E517E800974FC9 /* GetRepoService.swift in Sources */,
 				B252BACF24E43DDD00974FC9 /* SearchTableViewCell.swift in Sources */,
 				B252BADA24E477B400974FC9 /* EndPoints.swift in Sources */,
 				B252BAD324E446FB00974FC9 /* InfoTableViewCell.swift in Sources */,

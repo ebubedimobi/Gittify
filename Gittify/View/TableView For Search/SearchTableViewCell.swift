@@ -18,7 +18,6 @@ class SearchTableViewCell: UITableViewCell {
         super.awakeFromNib()
        
         viewHolder.layer.cornerRadius = viewHolder.frame.size.height / 7
-//        imageCover.layer.cornerRadius = imageCover.frame.size.height / 4
         
         
     }
