@@ -27,6 +27,8 @@
 		B252BADE24E5114900974FC9 /* RepoData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BADD24E5114900974FC9 /* RepoData.swift */; };
 		B252BAE024E517DA00974FC9 /* GetMoreInfoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BADF24E517DA00974FC9 /* GetMoreInfoService.swift */; };
 		B252BAE224E517E800974FC9 /* GetRepoService.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAE124E517E800974FC9 /* GetRepoService.swift */; };
+		B252BAE624E55AFC00974FC9 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B252BAE524E55AFC00974FC9 /* WebViewController.swift */; };
+		B252BAE824E55CD800974FC9 /* WebKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B252BAE724E55CD800974FC9 /* WebKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -53,6 +55,8 @@
 		B252BADD24E5114900974FC9 /* RepoData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepoData.swift; sourceTree = "<group>"; };
 		B252BADF24E517DA00974FC9 /* GetMoreInfoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetMoreInfoService.swift; sourceTree = "<group>"; };
 		B252BAE124E517E800974FC9 /* GetRepoService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetRepoService.swift; sourceTree = "<group>"; };
+		B252BAE524E55AFC00974FC9 /* WebViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
+		B252BAE724E55CD800974FC9 /* WebKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WebKit.framework; path = System/Library/Frameworks/WebKit.framework; sourceTree = SDKROOT; };
 		F9BFCA55159556266F52DE4E /* Pods-Gittify.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Gittify.debug.xcconfig"; path = "Target Support Files/Pods-Gittify/Pods-Gittify.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -61,6 +65,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B252BAE824E55CD800974FC9 /* WebKit.framework in Frameworks */,
 				09EF45703AC93C79D1A48050 /* Pods_Gittify.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -80,6 +85,7 @@
 		614AD4645119296FB66C0DD5 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				B252BAE724E55CD800974FC9 /* WebKit.framework */,
 				1FF2ACE635B5B6586533BD8C /* Pods_Gittify.framework */,
 			);
 			name = Frameworks;
@@ -135,6 +141,7 @@
 			children = (
 				B252BAB124E4319B00974FC9 /* SearchViewController.swift */,
 				B252BAC624E4338700974FC9 /* InformationViewController.swift */,
+				B252BAE524E55AFC00974FC9 /* WebViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -324,6 +331,7 @@
 				B252BADA24E477B400974FC9 /* EndPoints.swift in Sources */,
 				B252BAD324E446FB00974FC9 /* InfoTableViewCell.swift in Sources */,
 				B252BAB024E4319B00974FC9 /* SceneDelegate.swift in Sources */,
+				B252BAE624E55AFC00974FC9 /* WebViewController.swift in Sources */,
 				B252BAC724E4338700974FC9 /* InformationViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,7 +408,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -454,7 +462,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

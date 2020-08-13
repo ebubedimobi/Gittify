@@ -166,11 +166,11 @@ extension InformationViewController: UITableViewDelegate, UIScrollViewDelegate{
         
         guard self.repos != nil, self.pagelimit != nil, self.pageNumber != nil else { return }
         
+        guard !(self.repos!.count >= self.pagelimit!) else { return }
+        
         let position = scrollView.contentOffset.y
         
         if position > (tableView.contentSize.height - 10 - scrollView.frame.height){
-            
-            guard  !(self.pageNumber! > self.pagelimit! / Constants.resultsPerPage) else { return }
             
             if !self.isPaginating {
                 self.isPaginating = true

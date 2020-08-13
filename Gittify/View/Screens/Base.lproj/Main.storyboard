@@ -14,18 +14,18 @@
             <objects>
                 <viewController id="BYZ-38-t0r" customClass="SearchViewController" customModule="Gittify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <searchBar contentMode="redraw" placeholder="Поиск" translatesAutoresizingMaskIntoConstraints="NO" id="T1a-ut-wdP">
-                                <rect key="frame" x="0.0" y="88" width="414" height="56"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                                 <textInputTraits key="textInputTraits"/>
                                 <connections>
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="uPX-m1-2K6"/>
                                 </connections>
                             </searchBar>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="115" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="W9d-ae-RWf">
-                                <rect key="frame" x="0.0" y="144" width="414" height="752"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="752"/>
                                 <color key="backgroundColor" name="Background Color"/>
                                 <connections>
                                     <outlet property="dataSource" destination="BYZ-38-t0r" id="JNS-Zs-gVy"/>
@@ -50,6 +50,7 @@
                         <outlet property="searchBar" destination="T1a-ut-wdP" id="EB6-0S-PyK"/>
                         <outlet property="tableView" destination="W9d-ae-RWf" id="HhH-sV-YCx"/>
                         <segue destination="eYi-eu-2cP" kind="show" identifier="goToInfoFromSearch" id="AsD-pm-QtX"/>
+                        <segue destination="3I5-an-KWK" kind="show" identifier="goToWebViewFromSearch" id="v7U-T3-h71"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -61,11 +62,11 @@
             <objects>
                 <viewController id="eYi-eu-2cP" customClass="InformationViewController" customModule="Gittify" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="uEX-dv-Mmq">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="34" translatesAutoresizingMaskIntoConstraints="NO" id="tOw-bi-5C0">
-                                <rect key="frame" x="10" y="98" width="394" height="93"/>
+                                <rect key="frame" x="10" y="10" width="394" height="93"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="testttt" translatesAutoresizingMaskIntoConstraints="NO" id="veL-tP-hGb">
                                         <rect key="frame" x="0.0" y="0.0" width="114" height="93"/>
@@ -116,7 +117,7 @@
                                 </subviews>
                             </stackView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="97" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="zqm-Ht-eiT">
-                                <rect key="frame" x="0.0" y="236" width="414" height="660"/>
+                                <rect key="frame" x="0.0" y="148" width="414" height="660"/>
                                 <color key="backgroundColor" name="Background Color"/>
                                 <connections>
                                     <outlet property="dataSource" destination="eYi-eu-2cP" id="5wu-iM-MTS"/>
@@ -124,7 +125,7 @@
                                 </connections>
                             </tableView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Tt1-GI-yfq">
-                                <rect key="frame" x="0.0" y="191" width="414" height="40"/>
+                                <rect key="frame" x="0.0" y="103" width="414" height="40"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="qb6-7K-G3s">
                                         <rect key="frame" x="158" y="-5" width="159.5" height="50"/>
@@ -175,18 +176,53 @@
                         <outlet property="locationLabel" destination="PCn-uC-gfI" id="ajI-8r-X6Y"/>
                         <outlet property="repoNumberLabel" destination="zYx-Vd-Qdu" id="RIT-LB-zEd"/>
                         <outlet property="tableView" destination="zqm-Ht-eiT" id="LJT-SA-aUr"/>
+                        <segue destination="3I5-an-KWK" kind="show" identifier="goToWebViewFromInfo" id="vUJ-iT-Ak5"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kck-Mn-AyG" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1931.8840579710147" y="124.55357142857142"/>
         </scene>
+        <!--Web View Controller-->
+        <scene sceneID="0Wi-vA-5In">
+            <objects>
+                <viewController id="3I5-an-KWK" customClass="WebViewController" customModule="Gittify" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="IEy-fE-eMZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6iV-zk-rE5">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="808"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="6iV-zk-rE5" firstAttribute="top" secondItem="892-ik-BJd" secondAttribute="top" id="C56-sr-JL4"/>
+                            <constraint firstItem="6iV-zk-rE5" firstAttribute="trailing" secondItem="892-ik-BJd" secondAttribute="trailing" id="ZUn-a3-HYQ"/>
+                            <constraint firstItem="6iV-zk-rE5" firstAttribute="leading" secondItem="892-ik-BJd" secondAttribute="leading" id="bsI-ff-2qX"/>
+                            <constraint firstAttribute="bottom" secondItem="6iV-zk-rE5" secondAttribute="bottom" id="wJS-8E-jeh"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="892-ik-BJd"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="9pL-Zs-uOS"/>
+                    <connections>
+                        <outlet property="webView" destination="6iV-zk-rE5" id="QnM-1D-Chr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="DaJ-sO-WdH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2502.898550724638" y="949.55357142857133"/>
+        </scene>
         <!--Navigation Controller-->
         <scene sceneID="2Jc-VG-Ki2">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="dYR-qT-A4b" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="7e4-4x-8bG">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translucent="NO" id="7e4-4x-8bG">
                         <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="tintColor" name="Star"/>
@@ -205,6 +241,9 @@
             <point key="canvasLocation" x="137.68115942028987" y="137.94642857142856"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="vUJ-iT-Ak5"/>
+    </inferredMetricsTieBreakers>
     <resources>
         <image name="testttt" width="460" height="460"/>
         <namedColor name="Background Color">

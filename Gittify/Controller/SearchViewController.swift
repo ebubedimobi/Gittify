@@ -15,11 +15,15 @@ class SearchViewController: UIViewController {
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var tableView: UITableView!
     private let disposeBag = DisposeBag()
-    private var isPaginating = false
+    
     private var usersData: [Items]?
+    
+    //для пагинации
     private var pageNumber: Int?
     private var searchName: String?
     private var pagelimit: Int?
+    private var indexPath: IndexPath?
+    private var isPaginating = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -79,7 +83,6 @@ extension SearchViewController: UISearchBarDelegate{
         }
     }
     
-    //starts searching once person starts typing
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchBar.text?.count == 0{
             
@@ -152,15 +155,18 @@ extension SearchViewController: UITableViewDataSource{
 
 extension SearchViewController: UITableViewDelegate, UIScrollViewDelegate{
     
+    
+    //MARK: - Пагинация
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         
         guard self.usersData?.count != nil, self.pagelimit != nil, self.pageNumber != nil else { return }
         
+        guard !(self.usersData!.count >= self.pagelimit!) else {return}
+       
         let position = scrollView.contentOffset.y
         
         if position > (tableView.contentSize.height - 10 - scrollView.frame.height){
             
-            guard  !(self.pageNumber! > self.pagelimit! / Constants.resultsPerPage) else { return }
             
             if !self.isPaginating {
                 self.isPaginating = true
@@ -197,6 +203,29 @@ extension SearchViewController: UITableViewDelegate, UIScrollViewDelegate{
         
     }
     
+    //MARK: - Swipe Gestures
+    
+    //swipe from left
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let ToLink = goToLink(at: indexPath)
+        return UISwipeActionsConfiguration(actions:[ToLink])
+    }
+    
+    private func goToLink(at indexPath: IndexPath) -> UIContextualAction{
+        
+        let action = UIContextualAction(style: .normal, title: "Перейти") { (action, view, completion) in
+            self.indexPath = indexPath
+            self.performSegue(withIdentifier: Constants.Segue.searchToWeb, sender: self)
+            completion(true)
+            
+        }
+        
+        action.image = UIImage(named: "safari")
+        action.backgroundColor = .blue
+        return action
+    }
+    
+    
 }
 
 //MARK: - Segues and Navigation
@@ -213,6 +242,13 @@ extension SearchViewController{
                 tableView.deselectRow(at: indexPath, animated: true)
             }
             
+        }else if segue.identifier == Constants.Segue.searchToWeb{
+            let webVC = segue.destination as! WebViewController
+            if let indexPath = self.indexPath{
+                webVC.urlstring = usersData?[indexPath.row].html_url
+                tableView.deselectRow(at: indexPath, animated: true)
+                self.indexPath = nil
+            }
         }
     }
 }

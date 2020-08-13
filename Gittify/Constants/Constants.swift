@@ -13,14 +13,16 @@ struct Constants {
     static let resultsPerPage = 20
     
     struct Segue {
-         static let searchToInfo = "goToInfoFromSearch"
-         
-     }
+        static let searchToInfo = "goToInfoFromSearch"
+        static let searchToWeb = "goToWebViewFromSearch"
+        static let infoToWeb = "goToWebViewFromInfo"
+        
+    }
     
     struct CellIdentifiers {
-          static let forSearchVC = "SearchCell"
-          static let forInfoVC = "InfoCell"
-      }
+        static let forSearchVC = "SearchCell"
+        static let forInfoVC = "InfoCell"
+    }
     
     struct cellsizes {
         static let forSelected: CGFloat = 165
