@@ -22,7 +22,6 @@ class InformationViewController: UIViewController {
     var repos: [RepoData]?
     var extraUserData: ExtraUserData?
     
-    
     //для пагинации
     private var isPaginating = false
     private var pageNumber: Int?
@@ -59,7 +58,6 @@ class InformationViewController: UIViewController {
                 self.tableView.reloadData()
             }).disposed(by: disposeBag)
         }
-        
     }
     
     private func updateOutlets(){
